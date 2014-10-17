@@ -1,0 +1,30 @@
+<div class="container" data-ng-controller="homeController">
+            
+    <h3>Filter by Subject</h3>
+    Subject: <input type="text" data-ng-model="searchText" />
+    <select>
+        <option data-ng-repeat="subject in subjects | filter:subjectFilter" value="{{index}}">
+            {{subject}}
+        </option>
+    </select>
+    
+    
+    <div data-ng-repeat="proposal in proposals" data-ng-click="alert($index)">
+        <h3 data-ng-bind-html="proposal.title"></h3>
+        <div>
+            <span><img src="{{proposal.thumbImageURL}}"/></span>
+            <span data-ng-bind-html="proposal.fulfillmentTrailer"></span>
+        </div>
+        <div>
+            <strong>Remaining: </strong>
+            <span>${{proposal.costToComplete}}</span>
+        </div>
+        <div>
+            <strong>Expires: </strong>
+            <span>{{proposal.expirationDate}}</span>
+        </div>
+    </div>
+    
+    <a href="#/view2">View 2</a>
+</div>
+        

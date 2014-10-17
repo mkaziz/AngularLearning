@@ -1,26 +1,21 @@
-var demoApp = angular.module("demoApp", []);
+var donorsApp = angular.module("donorsApp", []);
 
 var controllers = {};
 
-demoApp.factory('someFactory', function () {
+donorsApp.factory('subjectFactory', function () {
     var factory = {};
-    var people = [
-        { name: "Sharpie", city: "Green Bay" },
-        { name: "Austine", city: "Miami" },
-        { name: "Jeff", city: "Houston" },
-        { name: "Chris", city: "San Francisco" }
-    ];
+    var subjects = [ "Music and the Arts", "Performing Arts", "Sports", "Literature and Writing"  ];
     
-    factory.getPeople = function () {
-        return people;
+    factory.getSubjects = function () {
+        return subjects;
     }
     
     return factory;
 })
 
 
-controllers.someController = function ($scope, someFactory) {
-    $scope.people = someFactory.getPeople();
+controllers.homeController = function ($scope, subjectFactory) {
+    $scope.subjects = subjectFactory.getSubjects();
 }
 
-demoApp.controller(controllers);
+donorsApp.controller(controllers);
