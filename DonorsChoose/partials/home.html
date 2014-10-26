@@ -2,14 +2,12 @@
             
     <h3>Filter by Subject</h3>
     Subject: <input type="text" data-ng-model="searchText" />
-    <select>
-        <option data-ng-repeat="subject in subjects | filter:subjectFilter" value="{{index}}">
-            {{subject}}
-        </option>
+    <select data-ng-init="selectedSubject = subjects[0]" data-ng-model="selectedSubject" data-ng-options="subject.title for subject in subjects">
     </select>
     
+    <input type="button" data-ng-click="search(searchText, selectedSubject)" value="Search" />
     
-    <div data-ng-repeat="proposal in proposals" data-ng-click="alert($index)">
+    <div data-ng-repeat="proposal in proposals" >
         <h3 data-ng-bind-html="proposal.title"></h3>
         <div>
             <span><img src="{{proposal.thumbImageURL}}"/></span>
@@ -25,6 +23,9 @@
         </div>
     </div>
     
-    <a href="#/view2">View 2</a>
+    <div data-ng-visible="proposals.length > 0">
+        <input type="button" data-ng-click="searchPage(searchText, selectedSubject, $index)" value="{{$index}}" data-ng-repeat="index in getArray() track by $index" />
+    </div>
+    
 </div>
         

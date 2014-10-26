@@ -14,11 +14,34 @@ donorsApp.config(function ($routeProvider) {
 
 });
 
+donorsApp.service("API", API).service("UtilitiesService", UtilitiesService);
+
 var controllers = {};
 
 donorsApp.factory('subjectFactory', function () {
     var factory = {};
-    var subjects = [ "Music and the Arts", "Performing Arts", "Sports", "Literature and Writing"  ];
+    var subjects = [
+                    {
+                        id: "",
+                        title: ""
+                    },
+                    {
+                        id: -1,
+                        title: "Music and the Arts"
+                    },
+                    {
+                        id: 2,
+                        title: "Performing Arts"
+                    },
+                    {
+                        id: 3,
+                        title: "Sports"
+                    },
+                    {
+                        id: 4,
+                        title: "Literature and Writing"
+                    }
+                   ];
     
     factory.getSubjects = function () {
         return subjects;
@@ -28,16 +51,45 @@ donorsApp.factory('subjectFactory', function () {
 })
 
 
-controllers.homeController = function ($scope, $http, subjectFactory) {
+controllers.homeController = function ($scope, $http, subjectFactory, API, UtilitiesService) {
     $scope.subjects = subjectFactory.getSubjects();
     $scope.proposals = [];
-    $scope.searchSubject = function(index) {
-        var request = $http.jsonp("http://api.donorschoose.org/common/json_feed.html?subject1="+index+"&APIKey=DONORSCHOOSE&callback=JSON_CALLBACK");
-        request.success(function (data, status, headers, config) {
+    $scope.totalProposals = 0;
+    $scope.index = 0;    
+    $scope.max = 10;    
+    $scope.search = function(searchText, selectedSubject) {
+        var searchParameters = {
+            subjectId : selectedSubject.id
+        }
+        
+        API.search(searchParameters).success(function (data, status, headers, config) {
             $scope.proposals = data.proposals;
-            console.log(data.proposals[0]);
+            $scope.totalProposals = data.totalProposals;
+            $scope.index = data.index;            
+            $scope.max = data.max;            
+            console.log(data);
         });
     }
+    $scope.getArray = function() {
+        console.log($scope.totalProposals);
+        return UtilitiesService.getArray($scope.proposals.length > 0 ? Math.ceil($scope.totalProposals/$scope.proposals.length) : 0);
+    }
+    
+    $scope.searchPage = function(searchText, selectedSubject, selectedPage) {
+        var searchParameters = {
+            subjectId : selectedSubject.id,
+            nextProposal : selectedPage * $scope.max
+        }
+        
+        API.search(searchParameters).success(function (data, status, headers, config) {
+            $scope.proposals = data.proposals;
+            $scope.totalProposals = data.totalProposals;
+            $scope.index = data.index;            
+            console.log(data);
+        });
+    }
+        
+    
 }
 
 donorsApp.controller(controllers);
