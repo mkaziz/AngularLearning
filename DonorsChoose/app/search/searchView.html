@@ -1,0 +1,20 @@
+<div class="container" data-ng-controller="searchController">
+    
+    <h2>Donors Choose</h2>
+    
+    <div>
+        <img src="http://placehold.it/350x150" />
+    </div>
+    
+    <input type="text" data-ng-model="searchText" placeholder="Search ..." />
+    
+    <input type="button" data-ng-click="showMoreOptions = !showMoreOptions" value="More Options" />
+    
+    <div class="more-options" data-ng-show="showMoreOptions">
+        <select data-ng-init="selectedSubject = subjects[0]" data-ng-model="selectedSubject" data-ng-options="subject.title for subject in subjects">
+        </select>
+    </div>
+    
+    <input type="button" data-ng-click="search(searchText, selectedSubject)" value="Search" />
+    
+</div>
