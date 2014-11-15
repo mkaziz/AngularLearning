@@ -14,7 +14,7 @@ donorsApp.config(function ($routeProvider) {
 
 });
 
-donorsApp.service("API", API).service("UtilitiesService", UtilitiesService);
+donorsApp.service("API", API);
 
 var controllers = {};
 
