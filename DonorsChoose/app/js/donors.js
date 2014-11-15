@@ -81,7 +81,7 @@ controllers.homeController = function ($scope, $http, subjectFactory, API, Utili
             nextProposal : selectedPage * $scope.max
         }
         
-        API.search(searchParameters).success(function (data, status, headers, config) {
+        API.searchPage(searchParameters).success(function (data, status, headers, config) {
             $scope.proposals = data.proposals;
             $scope.totalProposals = data.totalProposals;
             $scope.index = data.index;            
