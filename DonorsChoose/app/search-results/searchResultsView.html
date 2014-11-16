@@ -1,0 +1,15 @@
+<div data-ng-repeat="proposal in proposals" >
+    <h3 data-ng-bind-html="proposal.title"></h3>
+    <div>
+        <span><img src="{{proposal.thumbImageURL}}"/></span>
+        <span data-ng-bind-html="proposal.fulfillmentTrailer"></span>
+    </div>
+    <div>
+        <strong>Remaining: </strong>
+        <span>${{proposal.costToComplete}}</span>
+    </div>
+    <div>
+        <strong>Expires: </strong>
+        <span>{{proposal.expirationDate}}</span>
+    </div>
+</div>

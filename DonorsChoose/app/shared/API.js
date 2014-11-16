@@ -36,7 +36,7 @@ angular.module("donorsApp").factory("API", ["$http", function ($http) {
         return baseUrl;
     }
     
-    var results = {};
+    var results = null;
     
     return {
                 
