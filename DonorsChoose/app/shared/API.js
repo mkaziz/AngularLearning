@@ -36,13 +36,22 @@ angular.module("donorsApp").factory("API", ["$http", function ($http) {
         return baseUrl;
     }
     
+    var results = {};
     
     return {
                 
         search : function (searchParameters) {
             var request = $http.jsonp(constructSearchUrl(searchParameters));
             
+            request.success(function (data, status, headers, config) {
+                results = data;
+            });
+            
             return request;
+        },
+        
+        getSearchResuts: function() {
+            return results;
         }
         
     }

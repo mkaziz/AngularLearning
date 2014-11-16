@@ -8,7 +8,7 @@
     
     <input type="text" data-ng-model="searchText" placeholder="Search ..." />
     
-    <input type="button" data-ng-click="showMoreOptions = !showMoreOptions" value="More Options" />
+    <input type="button" data-ng-click="showMoreOptions = true" data-ng-show="!showMoreOptions" value="More Options" />
     
     <div class="more-options" data-ng-show="showMoreOptions">
         
@@ -41,6 +41,7 @@
             <input type="text" data-ng-model="zipCode" placeholder="eg. 60606" />
         </div>
     
+        <input type="button" data-ng-click="showMoreOptions = false" value="Less Options" />
     </div>
     
     <input type="button" data-ng-click="search()" value="Search" />

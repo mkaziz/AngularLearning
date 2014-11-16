@@ -1,4 +1,4 @@
-angular.module("donorsApp").controller("searchController", ['$scope', 'API', 'SearchFactory', function ($scope, API, SearchFactory) {
+angular.module("donorsApp").controller("searchController", ['$scope', '$location', 'API', 'SearchFactory', function ($scope, $location, API, SearchFactory) {
     
     $scope.showMoreOptions = false;
     
@@ -18,11 +18,7 @@ angular.module("donorsApp").controller("searchController", ['$scope', 'API', 'Se
         }
         
         API.search(searchParameters).success(function (data, status, headers, config) {
-            $scope.proposals = data.proposals;
-            $scope.totalProposals = data.totalProposals;
-            $scope.index = data.index;            
-            $scope.max = data.max;            
-            console.log(data);
+            $location.url('/results');
         });
     };
     

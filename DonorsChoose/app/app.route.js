@@ -6,7 +6,7 @@ donorsApp.config(function ($routeProvider) {
             controller: "searchController",
             templateUrl: 'app/search/searchView.html'
         })
-        .when('/view2', {
+        .when('/results', {
             controller: "resultsController",
             templateUrl: 'app/search-results/resultsView.html'
         })
