@@ -2,21 +2,45 @@ angular.module("donorsApp").factory("API", ["$http", function ($http) {
     
     var constructSearchUrl = function (searchParameters) {
         
-        var baseUrl = "http://api.donorschoose.org/common/json_feed.html?";
+        var baseUrl = "http://api.donorschoose.org/common/json_feed.html?APIKey=DONORSCHOOSE&callback=JSON_CALLBACK";
         
+        if (searchParameters.keywords || searchParameters.zipCode) {
+            var searchTerm = (searchParameters.keywords || "") + " " + (searchParameters.zipCode || "");
+            baseUrl += "&keywords=" + encodeURIComponent(searchTerm.trim());
+        }
+        
+        if (searchParameters.nextProposal) {
+            baseUrl += "&index=" + encodeURIComponent(searchParameters.nextProposal);
+        }
+        
+        if (searchParameters.subjectId) {
+            baseUrl += "&subject1=" + encodeURIComponent(searchParameters.subjectId);
+        }
+        
+        if (searchParameters.costToCompleteId) {
+            baseUrl += "&costToComplete=" + encodeURIComponent(searchParameters.costToCompleteId);
+        }
+        
+        if (searchParameters.isHighNeed) {
+            baseUrl += "&highLevelPoverty=true";
+        }
+        
+        if (searchParameters.gradeLevelId) {
+            baseUrl += "&gradeType=" + encodeURIComponent(searchParameters.gradeLevelId);
+        }
+        
+        if (searchParameters.sortById) {
+            baseUrl += "&sortBy=" + encodeURIComponent(searchParameters.sortById);
+        }
+        
+        return baseUrl;
     }
     
     
     return {
                 
         search : function (searchParameters) {
-            var request = $http.jsonp("http://api.donorschoose.org/common/json_feed.html?subject1="+searchParameters.subjectId+"&APIKey=DONORSCHOOSE&callback=JSON_CALLBACK");
-            
-            return request;
-        },
-    
-        searchPage : function (searchParameters) {
-            var request = $http.jsonp("http://api.donorschoose.org/common/json_feed.html?subject1="+searchParameters.subjectId+"&index="+searchParameters.nextProposal+"&APIKey=DONORSCHOOSE&callback=JSON_CALLBACK");
+            var request = $http.jsonp(constructSearchUrl(searchParameters));
             
             return request;
         }

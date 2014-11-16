@@ -11,10 +11,38 @@
     <input type="button" data-ng-click="showMoreOptions = !showMoreOptions" value="More Options" />
     
     <div class="more-options" data-ng-show="showMoreOptions">
-        <select data-ng-init="selectedSubject = subjects[0]" data-ng-model="selectedSubject" data-ng-options="subject.title for subject in subjects">
+        
+        <div class="subject">
+            <label>Subject</label>
+            <select data-ng-init="selectedSubject = subjects[0]" data-ng-model="selectedSubject" data-ng-options="subject.title for subject in subjects">
+            </select>
+        </div>
+                
+        <div class="cost-to-complete">
+            <label>Cost To Complete</label>
+            <select data-ng-init="costToComplete = costToCompletes[0]" data-ng-model="costToComplete" data-ng-options="costToComplete.title for costToComplete in costToCompletes">
         </select>
+        </div>
+        
+        <div class="grade-level">
+            <label>Grade Level</label>
+            <select data-ng-init="gradeLevel = gradeLevels[0]" data-ng-model="gradeLevel" data-ng-options="gradeLevel.title for gradeLevel in gradeLevels">
+        </select>
+        </div>
+        
+        <div class="sort-by">
+            <label>Sort By</label>
+            <select data-ng-init="sortBy = sortBys[0]" data-ng-model="sortBy" data-ng-options="sortBy.title for sortBy in sortBys">
+        </select>
+        </div>
+        
+        <div class="zip-code">
+            <label>Zip Code</label>
+            <input type="text" data-ng-model="zipCode" placeholder="eg. 60606" />
+        </div>
+    
     </div>
     
-    <input type="button" data-ng-click="search(searchText, selectedSubject)" value="Search" />
+    <input type="button" data-ng-click="search()" value="Search" />
     
 </div>

@@ -1,33 +1,20 @@
-angular.module("donorsApp").controller("searchController", ['$scope', 'API', function ($scope, API) {
+angular.module("donorsApp").controller("searchController", ['$scope', 'API', 'SearchFactory', function ($scope, API, SearchFactory) {
     
     $scope.showMoreOptions = false;
     
-    $scope.subjects =[
-                    {
-                        id: "",
-                        title: ""
-                    },
-                    {
-                        id: -1,
-                        title: "Music and the Arts"
-                    },
-                    {
-                        id: 2,
-                        title: "Performing Arts"
-                    },
-                    {
-                        id: 3,
-                        title: "Sports"
-                    },
-                    {
-                        id: 4,
-                        title: "Literature and Writing"
-                    }
-                   ];
+    $scope.subjects = SearchFactory.subjects;
+    $scope.costToCompletes = SearchFactory.costToCompletes;
+    $scope.gradeLevels = SearchFactory.gradeLevels;
+    $scope.sortBys = SearchFactory.sortBys;
     
-    $scope.search = function(searchText, selectedSubject) {
+    $scope.search = function() {
         var searchParameters = {
-            subjectId : selectedSubject.id
+            subjectId : $scope.selectedSubject.id,
+            keywords : $scope.searchText,
+            zipCode : $scope.zipCode,
+            gradeLevelId : $scope.gradeLevel.id,
+            sortById : $scope.sortBy.id,
+            costToCompleteId: $scope.costToComplete.id
         }
         
         API.search(searchParameters).success(function (data, status, headers, config) {
