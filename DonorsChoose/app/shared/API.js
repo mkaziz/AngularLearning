@@ -50,7 +50,7 @@ angular.module("donorsApp").factory("API", ["$http", function ($http) {
             return request;
         },
         
-        getSearchResuts: function() {
+        getSearchResults: function() {
             return results;
         }
         
