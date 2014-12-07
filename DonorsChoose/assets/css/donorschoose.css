@@ -1,0 +1,17 @@
+.donors-choose .app-content {
+    background-color: #FFF;
+    padding-top: 5em;
+}
+
+.donors-choose .centered-image {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.donors-choose .navbar-app {
+    background-color: #D32C2C;
+    border-color: #FFABAB;
+    color: #EEE;
+    text-shadow: 0.1em 0.1em 0.05em #aaa;
+}

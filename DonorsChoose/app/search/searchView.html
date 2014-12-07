@@ -1,56 +1,63 @@
-<div class="container" data-ng-controller="searchController">
-    <div class="navbar navbar-app navbar-absolute-top">
+<div class="container-fluid" data-ng-controller="searchController">
 
-      <div class="navbar-brand navbar-brand-center" yield-to="title">
-        <span>Donors Choose</span>
-      </div>
-      
-    </div>  
+    <div data-row data-ng-transclude>
+        <img class="centered-image" src="http://placehold.it/350x150" />
+    </div>
     
-    <div class="app-content">
+    <div data-row data-ng-transclude>
+        <input type="text" data-ng-model="searchText" placeholder="Search ..." />
+    </div>
+
+    <div data-row data-ng-transclude>
+        <input type="button" data-ng-click="showMoreOptions = true" data-ng-show="!showMoreOptions" value="More Options" />
+    </div>
+
+    <div class="more-options" data-ng-show="showMoreOptions">
+        
+        <div data-row data-ng-transclude class="subject">
+            <label>Subject</label>
+            <select data-ng-init="selectedSubject = subjects[0]" data-ng-model="selectedSubject" data-ng-options="subject.title for subject in subjects">
+            </select>
+        </div>
     
-        <div>
-            <img src="http://placehold.it/350x150" />
+        <div data-row data-ng-transclude class="cost-to-complete">
+            <label>Cost To Complete</label>
+            <select data-ng-init="costToComplete = costToCompletes[0]" data-ng-model="costToComplete" data-ng-options="costToComplete.title for costToComplete in costToCompletes">
+            </select>
+        </div>
+    
+        <div data-row data-ng-transclude class="grade-level">
+            <label>Grade Level</label>
+            <select data-ng-init="gradeLevel = gradeLevels[0]" data-ng-model="gradeLevel" data-ng-options="gradeLevel.title for gradeLevel in gradeLevels">
+            </select>
         </div>
         
-        <input type="text" data-ng-model="searchText" placeholder="Search ..." />
+        <div data-row data-ng-transclude class="sort-by">
+            <label>Sort By</label>
+            <select data-ng-init="sortBy = sortBys[0]" data-ng-model="sortBy" data-ng-options="sortBy.title for sortBy in sortBys">
+           /select>
+        </div>
         
-        <input type="button" data-ng-click="showMoreOptions = true" data-ng-show="!showMoreOptions" value="More Options" />
+        <div >
+            <input type="text" data-ng-model="searchText" placeholder="Search ..." />
+        </div>
+
+        <div data-row data-ng-transclude class="zip-code">
+            <label>Zip Code</label>
+            <input type="text" data-ng-model="zipCode" placeholder="eg. 60606" />
+        </div>
         
-        <div class="more-options" data-ng-show="showMoreOptions">
-            
-            <div class="subject">
-                <label>Subject</label>
-                <select data-ng-init="selectedSubject = subjects[0]" data-ng-model="selectedSubject" data-ng-options="subject.title for subject in subjects">
-                </select>
-            </div>
-                    
-            <div class="cost-to-complete">
-                <label>Cost To Complete</label>
-                <select data-ng-init="costToComplete = costToCompletes[0]" data-ng-model="costToComplete" data-ng-options="costToComplete.title for costToComplete in costToCompletes">
-            </select>
-            </div>
-            
-            <div class="grade-level">
-                <label>Grade Level</label>
-                <select data-ng-init="gradeLevel = gradeLevels[0]" data-ng-model="gradeLevel" data-ng-options="gradeLevel.title for gradeLevel in gradeLevels">
-            </select>
-            </div>
-            
-            <div class="sort-by">
-                <label>Sort By</label>
-                <select data-ng-init="sortBy = sortBys[0]" data-ng-model="sortBy" data-ng-options="sortBy.title for sortBy in sortBys">
-            </select>
-            </div>
-            
-            <div class="zip-code">
-                <label>Zip Code</label>
-                <input type="text" data-ng-model="zipCode" placeholder="eg. 60606" />
-            </div>
-        
+        <div data-row data-ng-transclude>
             <input type="button" data-ng-click="showMoreOptions = false" value="Less Options" />
         </div>
-        
-        <input type="button" data-ng-click="search()" value="Search" />
     </div>
+    
+    
+    </div>
+    
+    
+    
+    <input type="button" data-ng-click="search()" value="Search" />
+
+
 </div>

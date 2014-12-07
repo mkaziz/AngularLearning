@@ -5,6 +5,7 @@
         
         <!-- CSS -->
         <link rel="stylesheet" href="assets/css/mobile-angular-ui-base.css" />
+        <link rel="stylesheet" href="assets/css/donorschoose.css" />
         
         <!-- angular -->
         <script type="text/javascript" src="assets/libs/angular.min.js"></script>
@@ -18,6 +19,7 @@
         
         <!-- shared-->
         <script type="text/javascript" src="app/shared/API.js"></script>
+        <script type="text/javascript" src="app/shared/directiveRow.js"></script>
 
       
         <!-- search -->        
@@ -30,10 +32,21 @@
     </head>
     
     <body>
-        <div class="container" data-ng-view="">
+        <div class="app donors-choose">
+            <div class="navbar navbar-app navbar-absolute-top">
+                <div class="navbar-brand navbar-brand-center" yield-to="title">
+                  <span>Donors Choose</span>
+                </div>
+            </div>
             
+            <div class="app-body">
+                <div class="scrollable">
+                    <div class="scrollable-content">
+                        <div class="app-content" data-ng-view=""> </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
         
     </body>
 </html>
