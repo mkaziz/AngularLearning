@@ -22,4 +22,8 @@ angular.module("donorsApp").controller("searchController", ['$scope', '$location
         });
     };
     
+    $scope.setShowMoreOptions = function (bool) {
+        $scope.showMoreOptions = bool;
+    }
+    
 }]);

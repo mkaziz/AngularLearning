@@ -15,3 +15,12 @@
     color: #EEE;
     text-shadow: 0.1em 0.1em 0.05em #aaa;
 }
+
+.donors-choose .search-container .btn-link {
+    display: block;
+    margin-left: auto;
+}
+
+.donors-choose .search-container label {
+    margin-top: 2em;
+}
