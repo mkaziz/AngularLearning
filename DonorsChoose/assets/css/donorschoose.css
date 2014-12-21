@@ -1,4 +1,9 @@
-.donors-choose .app-content {
+.donors-choose .btn-primary {
+    background-color: #D32C2C;
+    border-color: #FFABAB;
+}
+
+.donors-choose .scrollable-content {
     background-color: #FFF;
     padding-top: 5em;
 }
