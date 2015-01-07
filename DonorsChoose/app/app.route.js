@@ -3,7 +3,7 @@ var donorsApp = angular.module("donorsApp");
 donorsApp.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: "searchController",
+            controller: "SearchController",
             templateUrl: 'app/search/searchView.html'
         })
         .when('/results', {
