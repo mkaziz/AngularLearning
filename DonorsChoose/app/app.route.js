@@ -10,5 +10,9 @@ donorsApp.config(function ($routeProvider) {
             controller: "SearchResultsController",
             templateUrl: 'app/search-results/searchResultsView.html'
         })
+        .when('/project/:id', {
+            controller: "ProjectController",
+            templateUrl: 'app/project/projectView.html'
+        })
         .otherwise({ redirectTo: '/' })
 });

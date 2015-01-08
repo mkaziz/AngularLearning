@@ -13,7 +13,7 @@ angular.module("donorsApp").controller("SearchResultsController", ['$scope', '$l
     self.totalProposals = data.totalProposals;
     
     self.didClickProposal = function (proposalId) {
-        
+         $location.url("/project/" + proposalId);   
     }
     
 }]);
