@@ -1,15 +1,18 @@
-<div data-ng-repeat="proposal in proposals" >
-    <h3 data-ng-bind-html="proposal.title"></h3>
-    <div>
-        <span><img src="{{proposal.thumbImageURL}}"/></span>
-        <span data-ng-bind-html="proposal.fulfillmentTrailer"></span>
-    </div>
-    <div>
-        <strong>Remaining: </strong>
-        <span>${{proposal.costToComplete}}</span>
-    </div>
-    <div>
-        <strong>Expires: </strong>
-        <span>{{proposal.expirationDate}}</span>
+<div data-ng-controller="SearchResultsController as searchResultsController">
+    <div data-ng-repeat="proposal in searchResultsController.proposals" class="list-group search-results-view">
+        <div class="list-group-item" data-ng-click="searchResultsController.clickedProposal()">
+            <h4 data-ng-bind-html="searchResultsController.proposal.title"></h4>
+            <div class="clearfix image-fulfillment-container">
+                <div class="image-container"><img src="{{proposal.thumbImageURL}}"/></div>
+                <p class="fulfillment-trailer" data-ng-bind-html="proposal.fulfillmentTrailer"></p>
+            </div>
+            <div>
+                <strong>Remaining: </strong>
+                <span>${{proposal.costToComplete}}</span>
+                
+                <strong>Expires: </strong>
+                <span>{{proposal.expirationDate}}</span>
+            </div> 
+        </div>
     </div>
 </div>

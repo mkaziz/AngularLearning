@@ -7,7 +7,7 @@ donorsApp.config(function ($routeProvider) {
             templateUrl: 'app/search/searchView.html'
         })
         .when('/results', {
-            controller: "searchResultsController",
+            controller: "SearchResultsController",
             templateUrl: 'app/search-results/searchResultsView.html'
         })
         .otherwise({ redirectTo: '/' })

@@ -29,3 +29,19 @@
 .donors-choose .search-container label {
     margin-top: 2em;
 }
+
+.donors-choose .search-results-view .image-container {
+    margin-bottom: 1em;
+}
+.donors-choose .search-results-view .image-container img {
+    float: left;
+    margin-right: 1em;
+}
+
+.donors-choose .search-results-view .image-fulfillment-container {
+    margin-bottom: 1em;
+}
+
+.donors-choose .search-results-view .fulfillment-trailer {
+    margin-top: -1em;
+}
