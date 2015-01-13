@@ -1,43 +1,58 @@
-<div class="container-fluid search-container" data-ng-controller="ProjectController as projectController">
+<div class="container-fluid project-container" data-ng-controller="ProjectController as projectController">
 
     <div class="form-group">
         <div data-row>
-            <img class="centered-image" src="http://placehold.it/400x200" />
+            <img class="centered-image" src="{{projectController.project.imageURL}}" />
         </div>
     
         <div data-row>
-            <strong>Remaining: </strong>
-            <span>$50.00</span>
-            
-            <strong>Expires: </strong>
-            <span>1/1/16</span>
+            <span class="remaining-amount-text">
+                <strong>Remaining: </strong>
+                <span>{{projectController.project.costToComplete}}</span>
+            </span>
+
+            <span class="expiry-text">
+                <strong>Expires: </strong>
+                <span>{{projectController.project.expirationDate}}</span>
+            </span>
         </div>
-    
+        
+        <div data-row>
+            <h3>{{projectController.project.title}}</h3>
+        </div>
+        
         <div data-row>
             <p>
-                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+                <i>
+                    {{projectController.project.fulfillmentTrailer}}
+                </i>
+            </p>
+            <p>
+                {{projectController.project.shortDescription}}
             </p>
         </div>
         
         <div data-row>
-            <table>
+            <table class="table table-bordered"> 
                 <tr>
                     <td>Location</td>
-                    <td>Chicago, IL</td>
+                    <td>{{projectController.project.city}}, {{projectController.project.state}} </td>
                 </tr>
                 <tr>
                     <td>Poverty Level</td>
-                    <td>High</td>
+                    <td>{{projectController.project.povertyLevel}}</td>
                 </tr>
                 <tr>
                     <td>Grade Level</td>
-                    <td>6-8th grade</td>
+                    <td>{{projectController.project.gradeLevel.name}}</td>
                 </tr>
             </table>
         </div>
 
+        <div data-row>
+            <a href="{{projectController.project.proposalURL}}" class="btn btn-primary btn-block">Open in Browser</a>
+        </div>
+        
     </div>
     
 </div>

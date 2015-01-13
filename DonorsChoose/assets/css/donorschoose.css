@@ -45,3 +45,11 @@
 .donors-choose .search-results-view .fulfillment-trailer {
     margin-top: -1em;
 }
+
+.donors-choose .expiry-text {
+    float: right;
+}
+
+.donors-choose .project-container .row {
+    margin-bottom: 1em;
+}
