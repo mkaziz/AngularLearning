@@ -12,7 +12,7 @@ donorsApp.config(function ($routeProvider) {
         })
         .otherwise({ redirectTo: '/' })
 
-});
+}); 
 
 donorsApp.service("API", API);
 
